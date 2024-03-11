@@ -1,5 +1,4 @@
 ﻿using Domenic_Arias_C968.inventoryManagmentSystem;
-using Domenic_Arias_C968.model;
 using System;
 using System.Windows.Forms;
 
@@ -85,7 +84,7 @@ namespace ManagmentSystemUI
                 {
                     Inventory.Products.RemoveAt(ProductsShowBox.CurrentRow.Index);
                 }
-                
+
             }
 
 
@@ -99,13 +98,18 @@ namespace ManagmentSystemUI
 
         private void ModifyPartsBtn_Click(object sender, EventArgs e)
         {
-            if (!ProductsShowBox.CurrentRow.Selected)
+            if (!partsShowBox.CurrentRow.Selected)
             {
                 MessageBox.Show("Please select a product to modify");
             }
-            ModifyPartForm modifyPartForm = new ModifyPartForm();
-            modifyPartForm.Show();
-            
+            else if (partsShowBox.CurrentRow.Selected)
+            {
+
+                ModifyPartForm modifyPartForm = new ModifyPartForm();
+                modifyPartForm.Show();
+            }
+
+
         }
 
         private void DeletePartsBtn_Click(object sender, EventArgs e)
