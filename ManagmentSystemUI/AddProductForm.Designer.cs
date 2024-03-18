@@ -42,11 +42,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.partsShowBox = new System.Windows.Forms.DataGridView();
             this.associatedPartShowBox = new System.Windows.Forms.DataGridView();
-            this.searchBtn = new System.Windows.Forms.Button();
+            this.searchBtnAll = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.searchValue = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.searchButtonAssociate = new System.Windows.Forms.Button();
+            this.searchValueAssociate = new System.Windows.Forms.TextBox();
+            this.allPartsSearch = new System.Windows.Forms.TextBox();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             // minValue
             // 
             this.minValue.Location = new System.Drawing.Point(407, 530);
-            this.minValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.minValue.Margin = new System.Windows.Forms.Padding(6);
             this.minValue.Name = "minValue";
             this.minValue.Size = new System.Drawing.Size(88, 29);
             this.minValue.TabIndex = 31;
@@ -78,7 +78,7 @@
             // priceCostValue
             // 
             this.priceCostValue.Location = new System.Drawing.Point(156, 449);
-            this.priceCostValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.priceCostValue.Margin = new System.Windows.Forms.Padding(6);
             this.priceCostValue.Name = "priceCostValue";
             this.priceCostValue.Size = new System.Drawing.Size(340, 29);
             this.priceCostValue.TabIndex = 30;
@@ -96,7 +96,7 @@
             // maxValue
             // 
             this.maxValue.Location = new System.Drawing.Point(156, 524);
-            this.maxValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.maxValue.Margin = new System.Windows.Forms.Padding(6);
             this.maxValue.Name = "maxValue";
             this.maxValue.Size = new System.Drawing.Size(88, 29);
             this.maxValue.TabIndex = 26;
@@ -114,7 +114,7 @@
             // inventoryValue
             // 
             this.inventoryValue.Location = new System.Drawing.Point(156, 378);
-            this.inventoryValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.inventoryValue.Margin = new System.Windows.Forms.Padding(6);
             this.inventoryValue.Name = "inventoryValue";
             this.inventoryValue.Size = new System.Drawing.Size(340, 29);
             this.inventoryValue.TabIndex = 24;
@@ -132,7 +132,7 @@
             // addProductNameValue
             // 
             this.addProductNameValue.Location = new System.Drawing.Point(156, 312);
-            this.addProductNameValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.addProductNameValue.Margin = new System.Windows.Forms.Padding(6);
             this.addProductNameValue.Name = "addProductNameValue";
             this.addProductNameValue.Size = new System.Drawing.Size(340, 29);
             this.addProductNameValue.TabIndex = 22;
@@ -150,7 +150,7 @@
             // addProductIDValue
             // 
             this.addProductIDValue.Location = new System.Drawing.Point(156, 249);
-            this.addProductIDValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.addProductIDValue.Margin = new System.Windows.Forms.Padding(6);
             this.addProductIDValue.Name = "addProductIDValue";
             this.addProductIDValue.Size = new System.Drawing.Size(340, 29);
             this.addProductIDValue.TabIndex = 20;
@@ -171,13 +171,13 @@
             this.partsShowBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.partsShowBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsShowBox.Location = new System.Drawing.Point(642, 150);
-            this.partsShowBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.partsShowBox.Margin = new System.Windows.Forms.Padding(6);
             this.partsShowBox.MultiSelect = false;
             this.partsShowBox.Name = "partsShowBox";
             this.partsShowBox.ReadOnly = true;
             this.partsShowBox.RowHeadersWidth = 51;
             this.partsShowBox.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.partsShowBox.Size = new System.Drawing.Size(1186, 412);
+            this.partsShowBox.Size = new System.Drawing.Size(1096, 412);
             this.partsShowBox.TabIndex = 33;
             this.partsShowBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partsShowBox_CellContentClick);
             // 
@@ -187,29 +187,30 @@
             this.associatedPartShowBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.associatedPartShowBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.associatedPartShowBox.Location = new System.Drawing.Point(642, 705);
-            this.associatedPartShowBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.associatedPartShowBox.Margin = new System.Windows.Forms.Padding(6);
             this.associatedPartShowBox.MultiSelect = false;
             this.associatedPartShowBox.Name = "associatedPartShowBox";
             this.associatedPartShowBox.ReadOnly = true;
             this.associatedPartShowBox.RowHeadersWidth = 51;
             this.associatedPartShowBox.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.associatedPartShowBox.Size = new System.Drawing.Size(1186, 412);
+            this.associatedPartShowBox.Size = new System.Drawing.Size(1096, 412);
             this.associatedPartShowBox.TabIndex = 34;
             // 
-            // searchBtn
+            // searchBtnAll
             // 
-            this.searchBtn.Location = new System.Drawing.Point(642, 96);
-            this.searchBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(138, 42);
-            this.searchBtn.TabIndex = 35;
-            this.searchBtn.Text = "Search";
-            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtnAll.Location = new System.Drawing.Point(642, 96);
+            this.searchBtnAll.Margin = new System.Windows.Forms.Padding(6);
+            this.searchBtnAll.Name = "searchBtnAll";
+            this.searchBtnAll.Size = new System.Drawing.Size(138, 42);
+            this.searchBtnAll.TabIndex = 35;
+            this.searchBtnAll.Text = "Search";
+            this.searchBtnAll.UseVisualStyleBackColor = true;
+            this.searchBtnAll.Click += new System.EventHandler(this.searchBtnAll_Click);
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(1690, 572);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.addBtn.Location = new System.Drawing.Point(1618, 565);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(6);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(138, 42);
             this.addBtn.TabIndex = 36;
@@ -217,36 +218,37 @@
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
-            // searchButton
+            // searchButtonAssociate
             // 
-            this.searchButton.Location = new System.Drawing.Point(642, 652);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(138, 42);
-            this.searchButton.TabIndex = 37;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButtonAssociate.Location = new System.Drawing.Point(642, 652);
+            this.searchButtonAssociate.Margin = new System.Windows.Forms.Padding(6);
+            this.searchButtonAssociate.Name = "searchButtonAssociate";
+            this.searchButtonAssociate.Size = new System.Drawing.Size(138, 42);
+            this.searchButtonAssociate.TabIndex = 37;
+            this.searchButtonAssociate.Text = "Search";
+            this.searchButtonAssociate.UseVisualStyleBackColor = true;
+            this.searchButtonAssociate.Click += new System.EventHandler(this.searchButtonAssociate_Click);
             // 
-            // searchValue
+            // searchValueAssociate
             // 
-            this.searchValue.Location = new System.Drawing.Point(790, 652);
-            this.searchValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.searchValue.Name = "searchValue";
-            this.searchValue.Size = new System.Drawing.Size(477, 29);
-            this.searchValue.TabIndex = 38;
+            this.searchValueAssociate.Location = new System.Drawing.Point(790, 652);
+            this.searchValueAssociate.Margin = new System.Windows.Forms.Padding(6);
+            this.searchValueAssociate.Name = "searchValueAssociate";
+            this.searchValueAssociate.Size = new System.Drawing.Size(477, 29);
+            this.searchValueAssociate.TabIndex = 38;
             // 
-            // textBox2
+            // allPartsSearch
             // 
-            this.textBox2.Location = new System.Drawing.Point(790, 100);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(477, 29);
-            this.textBox2.TabIndex = 39;
+            this.allPartsSearch.Location = new System.Drawing.Point(790, 100);
+            this.allPartsSearch.Margin = new System.Windows.Forms.Padding(6);
+            this.allPartsSearch.Name = "allPartsSearch";
+            this.allPartsSearch.Size = new System.Drawing.Size(477, 29);
+            this.allPartsSearch.TabIndex = 39;
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(1690, 1121);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.deleteBtn.Location = new System.Drawing.Point(1618, 1121);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(6);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(138, 42);
             this.deleteBtn.TabIndex = 40;
@@ -268,7 +270,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1481, 672);
+            this.label3.Location = new System.Drawing.Point(1451, 674);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(305, 25);
@@ -278,7 +280,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1734, 109);
+            this.label4.Location = new System.Drawing.Point(1672, 113);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 25);
@@ -287,7 +289,7 @@
             // 
             // addProductCancelBtn
             // 
-            this.addProductCancelBtn.Location = new System.Drawing.Point(1690, 1172);
+            this.addProductCancelBtn.Location = new System.Drawing.Point(1618, 1172);
             this.addProductCancelBtn.Name = "addProductCancelBtn";
             this.addProductCancelBtn.Size = new System.Drawing.Size(138, 39);
             this.addProductCancelBtn.TabIndex = 66;
@@ -297,7 +299,7 @@
             // 
             // addProductSaveBtn
             // 
-            this.addProductSaveBtn.Location = new System.Drawing.Point(1552, 1172);
+            this.addProductSaveBtn.Location = new System.Drawing.Point(1480, 1172);
             this.addProductSaveBtn.Name = "addProductSaveBtn";
             this.addProductSaveBtn.Size = new System.Drawing.Size(132, 39);
             this.addProductSaveBtn.TabIndex = 67;
@@ -309,18 +311,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1850, 1259);
+            this.ClientSize = new System.Drawing.Size(1794, 1259);
             this.Controls.Add(this.addProductSaveBtn);
             this.Controls.Add(this.addProductCancelBtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.searchValue);
-            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.allPartsSearch);
+            this.Controls.Add(this.searchValueAssociate);
+            this.Controls.Add(this.searchButtonAssociate);
             this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.searchBtn);
+            this.Controls.Add(this.searchBtnAll);
             this.Controls.Add(this.associatedPartShowBox);
             this.Controls.Add(this.partsShowBox);
             this.Controls.Add(this.label9);
@@ -335,7 +337,7 @@
             this.Controls.Add(this.namelabel);
             this.Controls.Add(this.addProductIDValue);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "AddProductForm";
             this.Text = "AddProductForm";
             ((System.ComponentModel.ISupportInitialize)(this.partsShowBox)).EndInit();
@@ -361,11 +363,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView partsShowBox;
         private System.Windows.Forms.DataGridView associatedPartShowBox;
-        private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.Button searchBtnAll;
         private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox searchValue;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button searchButtonAssociate;
+        private System.Windows.Forms.TextBox searchValueAssociate;
+        private System.Windows.Forms.TextBox allPartsSearch;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;

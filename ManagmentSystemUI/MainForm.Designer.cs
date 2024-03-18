@@ -115,7 +115,7 @@
             // 
             // AddPartsBtn
             // 
-            this.AddPartsBtn.Location = new System.Drawing.Point(436, 724);
+            this.AddPartsBtn.Location = new System.Drawing.Point(523, 724);
             this.AddPartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.AddPartsBtn.Name = "AddPartsBtn";
             this.AddPartsBtn.Size = new System.Drawing.Size(138, 42);
@@ -126,7 +126,7 @@
             // 
             // DeletePartsBtn
             // 
-            this.DeletePartsBtn.Location = new System.Drawing.Point(733, 724);
+            this.DeletePartsBtn.Location = new System.Drawing.Point(823, 724);
             this.DeletePartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.DeletePartsBtn.Name = "DeletePartsBtn";
             this.DeletePartsBtn.Size = new System.Drawing.Size(138, 42);
@@ -137,7 +137,7 @@
             // 
             // ModifyPartsBtn
             // 
-            this.ModifyPartsBtn.Location = new System.Drawing.Point(585, 724);
+            this.ModifyPartsBtn.Location = new System.Drawing.Point(673, 724);
             this.ModifyPartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.ModifyPartsBtn.Name = "ModifyPartsBtn";
             this.ModifyPartsBtn.Size = new System.Drawing.Size(138, 42);
@@ -159,7 +159,7 @@
             // 
             // SearchPartsBtn
             // 
-            this.SearchPartsBtn.Location = new System.Drawing.Point(436, 113);
+            this.SearchPartsBtn.Location = new System.Drawing.Point(528, 113);
             this.SearchPartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.SearchPartsBtn.Name = "SearchPartsBtn";
             this.SearchPartsBtn.Size = new System.Drawing.Size(138, 42);
@@ -180,9 +180,8 @@
             this.partsShowBox.ReadOnly = true;
             this.partsShowBox.RowHeadersWidth = 51;
             this.partsShowBox.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.partsShowBox.Size = new System.Drawing.Size(843, 546);
+            this.partsShowBox.Size = new System.Drawing.Size(933, 546);
             this.partsShowBox.TabIndex = 14;
-      
             this.partsShowBox.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.NoPartsSelectedInit);
             // 
             // ProductsShowBox
@@ -225,7 +224,7 @@
             // 
             // searchPartsValue
             // 
-            this.searchPartsValue.Location = new System.Drawing.Point(585, 118);
+            this.searchPartsValue.Location = new System.Drawing.Point(678, 119);
             this.searchPartsValue.Margin = new System.Windows.Forms.Padding(6);
             this.searchPartsValue.Name = "searchPartsValue";
             this.searchPartsValue.Size = new System.Drawing.Size(283, 29);

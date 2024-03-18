@@ -2,6 +2,7 @@
 using Domenic_Arias_C968.model;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ManagmentSystemUI
@@ -14,17 +15,20 @@ namespace ManagmentSystemUI
             InitializeComponent();
             addProductIDValue.Enabled = false;
             partsShowBox.DataSource = Inventory.AllParts;
-            this.Size = new System.Drawing.Size(1110, 700);
+            this.Size = new System.Drawing.Size(1000, 700);
             partsShowBox.ClearSelection();
             associatedPartShowBox.DataSource = parts;
             // binds data to the datagrid and ensures to clear the selection after the data is loaded
             partsShowBox.DataBindingComplete += PartsShowBox_DataBindingComplete;
+            partsShowBox.RowHeadersVisible = false;
+            associatedPartShowBox.RowHeadersVisible = false;
         }
 
         //clears the selection after the data is loaded
         private void PartsShowBox_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             partsShowBox.ClearSelection();
+            associatedPartShowBox.ClearSelection();
 
         }
 
@@ -125,22 +129,149 @@ namespace ManagmentSystemUI
         private void deleteBtn_Click(object sender, EventArgs e)
         {
 
-            if (partsShowBox.CurrentRow == null)
-            {
-                MessageBox.Show("Please select a part to delete");
-            }
-            else
+
+
+
+            if (associatedPartShowBox.CurrentRow.DataBoundItem is Parts part)
             {
                 if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this part?", "Confirmation", MessageBoxButtons.YesNo))
                 {
-                    parts.Remove((Parts)associatedPartShowBox.CurrentRow.DataBoundItem);
+                    parts.Remove(part);
                 }
             }
+            else
+            {
+                MessageBox.Show("Please select a part to delete");
+            }
+
+
+
 
         }
 
+        private void searchButtonAssociate_Click(object sender, EventArgs e)
+        {
+            if (associatedPartShowBox.Rows.Count == 0)
+            {
+                MessageBox.Show("The associated parts box is empty");
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(searchValueAssociate.Text))
+            {
+                MessageBox.Show("Please enter a part ID to search");
+                foreach (DataGridViewRow row in associatedPartShowBox.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+                return; // Exit the method if search value is empty
+            }
+
+            try
+            {
+                int partId = Convert.ToInt32(searchValueAssociate.Text);
+                var part = Inventory.lookupPart(partId);
+
+                if (part != null)
+                {
+                    // Do something with the part 
+                    foreach (DataGridViewRow row in associatedPartShowBox.Rows)
+                    {
+                        if (row.Cells[0].Value != null && (int)row.Cells[0].Value == partId)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+
+                    }
+                }
+                else
+                {
+                    // Check if the partId exists in the rows
+                    bool partFound = false;
+                    foreach (DataGridViewRow row in associatedPartShowBox.Rows)
+                    {
+                        if (row.Cells[0].Value != null && (int)row.Cells[0].Value == partId)
+                        {
+                            partFound = true;
+                            break;
+                        }
+                    }
+
+                    if (!partFound)
+                    {
+                        MessageBox.Show("No matching parts found");
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid part ID");
+            }
+
+            associatedPartShowBox.ClearSelection();
+        }
+
+
+
+        private void searchBtnAll_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(allPartsSearch.Text))
+            {
+                MessageBox.Show("Please enter a part ID to search");
+                foreach (DataGridViewRow row in partsShowBox.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+                return; // Exit the method if search value is empty
+            }
+
+            try
+            {
+                int partId = Convert.ToInt32(allPartsSearch.Text);
+                var part = Inventory.lookupPart(partId);
+
+                if (part != null)
+                {
+                    // Do something with the part
+                    foreach (DataGridViewRow row in partsShowBox.Rows)
+                    {
+                        if (row.Cells[0].Value != null && (int)row.Cells[0].Value == partId)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Part not found");
+                    partsShowBox.ClearSelection();
+                    foreach (DataGridViewRow row in partsShowBox.Rows)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid part ID");
+            }
+
+            partsShowBox.ClearSelection();
+        }
     }
-
 }
+
+
 

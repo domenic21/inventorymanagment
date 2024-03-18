@@ -6,7 +6,7 @@ namespace ManagmentSystemUI
     public class Products
     {
 
-        public  BindingList<Parts> AssociatedParts = new BindingList<Parts>();
+        public BindingList<Parts> AssociatedParts = new BindingList<Parts>();
         public Products(int productID, string name, int inventory, decimal price, int min, int max)
         {
             ProductID = productID;
@@ -26,14 +26,14 @@ namespace ManagmentSystemUI
         public int Max { get; set; }
 
 
-       
-        public  void addAssociatedPart(Parts part)
+
+        public void addAssociatedPart(Parts part)
         {
             AssociatedParts.Add(part);
         }
 
-        public  void removeAssociatedPart(Parts part) { AssociatedParts.Remove(part); }
-        public  Parts lookupAssociatedPart(int partID)
+        public void removeAssociatedPart(Parts part) { AssociatedParts.Remove(part); }
+        public Parts lookupAssociatedPart(int partID)
         {
             foreach (Parts part in AssociatedParts)
             {

@@ -2,23 +2,26 @@
 using Domenic_Arias_C968.model;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ManagmentSystemUI
 {
     public partial class ModifyProductForm : Form
     {
-        
-      
+
+
         BindingList<Parts> parts = new BindingList<Parts>();
+        private readonly Products product;
 
         public ModifyProductForm(Products product)
         {
             InitializeComponent();
-            this.Size = new System.Drawing.Size(1110, 700);
+            this.Size = new Size(1000, 700);
             allPartsShowBox.DataSource = Inventory.AllParts;
             modifyProductIDValue.Enabled = false;
-            
+            allPartsShowBox.ClearSelection();
+            partsAssociatedBox.ClearSelection();
             modifyProductIDValue.Text = product.ProductID.ToString();
             modifyProductNameValue.Text = product.Name;
             inventoryValue.Text = product.Inventory.ToString();
@@ -26,15 +29,18 @@ namespace ManagmentSystemUI
             maxValue.Text = product.Max.ToString();
             minValue.Text = product.Min.ToString();
             partsAssociatedBox.DataSource = parts;
+            allPartsShowBox.RowHeadersVisible = false;
+            partsAssociatedBox.RowHeadersVisible = false;
             foreach (Parts part in product.AssociatedParts)
             {
                 parts.Add(part);
 
             }
-            
+
         }
 
-       
+
+
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
@@ -52,6 +58,7 @@ namespace ManagmentSystemUI
                 Parts part = (Parts)allPartsShowBox.CurrentRow.DataBoundItem;
                 parts.Add(part);
             }
+            allPartsShowBox.ClearSelection();
         }
 
         private void modifySaveProduct_Click(object sender, EventArgs e)
@@ -98,8 +105,149 @@ namespace ManagmentSystemUI
             catch (Exception)
             {
                 MessageBox.Show("Please enter a valid value for each field");
-            }   
+            }
 
         }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (partsAssociatedBox.CurrentRow.DataBoundItem is Parts part)
+            {
+                if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this part?", "Confirmation", MessageBoxButtons.YesNo))
+                {
+                    parts.Remove(part);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a part to delete");
+            }
+            partsAssociatedBox.ClearSelection();
+
+        }
+        //search button for all parts
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchAllParts.Text))
+            {
+                MessageBox.Show("Please enter a part ID to search");
+                foreach (DataGridViewRow row in allPartsShowBox.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+                return; // Exit the method if search value is empty
+            }
+
+            try
+            {
+                int partId = Convert.ToInt32(searchAllParts.Text);
+                var part = Inventory.lookupPart(partId);
+
+                if (part != null)
+                {
+                    // Do something with the part
+                    foreach (DataGridViewRow row in allPartsShowBox.Rows)
+                    {
+                        if (row.Cells[0].Value != null && (int)row.Cells[0].Value == partId)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Part not found");
+                    allPartsShowBox.ClearSelection();
+                    foreach (DataGridViewRow row in allPartsShowBox.Rows)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid part ID");
+            }
+
+            allPartsShowBox.ClearSelection();
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            if (partsAssociatedBox.Rows.Count == 0)
+            {
+                MessageBox.Show("The associated parts box is empty");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(searchValueAssociated.Text))
+            {
+                MessageBox.Show("Please enter a part ID to search");
+                foreach (DataGridViewRow row in partsAssociatedBox.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+                return; // Exit the method if search value is empty
+            }
+
+            try
+            {
+                int partId = Convert.ToInt32(searchValueAssociated.Text);
+                var part = Inventory.lookupPart(partId);
+
+                if (part != null)
+                {
+                    // Do something with the part
+                    foreach (DataGridViewRow row in partsAssociatedBox.Rows)
+                    {
+                        if (row.Cells[0].Value != null && (int)row.Cells[0].Value == partId)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+
+                    }
+                }
+                else
+                {
+
+                    partsAssociatedBox.ClearSelection();
+                    foreach (DataGridViewRow row in partsAssociatedBox.Rows)
+                    {
+                        if ((int)row.Cells[0].Value != partId )
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                            MessageBox.Show("Part not found");
+                            break;
+                        }
+
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid part ID");
+            }
+
+            partsAssociatedBox.ClearSelection();
+            allPartsShowBox.ClearSelection();
+
+
+        }
+        //associate parts search button
+
+        //search button for all parts
+
+
+
     }
 }

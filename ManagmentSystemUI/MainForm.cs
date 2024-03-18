@@ -13,11 +13,14 @@ namespace ManagmentSystemUI
         public MainForm()
         {
             InitializeComponent();
-            this.Size = new System.Drawing.Size(1130, 500);
+            this.Size = new Size(1130, 500);
             ProductsShowBox.DataSource = Inventory.Products;
             ProductsShowBox.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ProductsShowBox.MultiSelect = false;
             ProductsShowBox.AllowUserToAddRows = false;
+            ProductsShowBox.RowHeadersVisible = false;
+            ProductsShowBox.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
 
 
             partsShowBox.DataSource = Inventory.AllParts;
@@ -25,6 +28,8 @@ namespace ManagmentSystemUI
             partsShowBox.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             partsShowBox.MultiSelect = false;
             partsShowBox.AllowUserToAddRows = false;
+            partsShowBox.RowHeadersVisible = false;
+            partsShowBox.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //called the method to add parts to the inventory
             InventoryData();
 
@@ -45,6 +50,10 @@ namespace ManagmentSystemUI
             Inventory.addProduct(new Products(6, "Truck", 10, 200, 1, 10));
             Inventory.addProduct(new Products(7, "Motorcycle", 10, 500, 1, 10));
             Inventory.addProduct(new Products(8, "Bike", 10, 500, 1, 10));
+
+
+
+
         }
 
 
@@ -82,11 +91,11 @@ namespace ManagmentSystemUI
                 MessageBox.Show("Please select a product to modify");
             }
             else if (ProductsShowBox.CurrentRow.Selected)
-             {
-                 Products product = (Products)ProductsShowBox.CurrentRow.DataBoundItem;
-                 ModifyProductForm modifyProductForm = new ModifyProductForm(product);
-                 modifyProductForm.Show();
-             }
+            {
+                Products product = (Products)ProductsShowBox.CurrentRow.DataBoundItem;
+                ModifyProductForm modifyProductForm = new ModifyProductForm(product);
+                modifyProductForm.Show();
+            }
         }
 
 
