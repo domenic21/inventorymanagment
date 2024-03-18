@@ -34,7 +34,7 @@
             this.minValue = new System.Windows.Forms.TextBox();
             this.priceCostValue = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.Value = new System.Windows.Forms.TextBox();
+            this.ValueSwitch = new System.Windows.Forms.TextBox();
             this.labelSwitch = new System.Windows.Forms.Label();
             this.maxValue = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -69,6 +69,7 @@
             this.modifyPartsSaveBtn.TabIndex = 38;
             this.modifyPartsSaveBtn.Text = "Save";
             this.modifyPartsSaveBtn.UseVisualStyleBackColor = true;
+            this.modifyPartsSaveBtn.Click += new System.EventHandler(this.modifyPartsSaveBtn_Click);
             // 
             // label9
             // 
@@ -106,13 +107,13 @@
             this.label8.TabIndex = 34;
             this.label8.Text = "Max";
             // 
-            // Value
+            // ValueSwitch
             // 
-            this.Value.Location = new System.Drawing.Point(462, 690);
-            this.Value.Margin = new System.Windows.Forms.Padding(6);
-            this.Value.Name = "Value";
-            this.Value.Size = new System.Drawing.Size(340, 29);
-            this.Value.TabIndex = 33;
+            this.ValueSwitch.Location = new System.Drawing.Point(462, 690);
+            this.ValueSwitch.Margin = new System.Windows.Forms.Padding(6);
+            this.ValueSwitch.Name = "ValueSwitch";
+            this.ValueSwitch.Size = new System.Drawing.Size(340, 29);
+            this.ValueSwitch.TabIndex = 33;
             // 
             // labelSwitch
             // 
@@ -162,7 +163,7 @@
             // 
             // modifyPartNameValue
             // 
-            this.modifyPartNameValue.Location = new System.Drawing.Point(462, 246);
+            this.modifyPartNameValue.Location = new System.Drawing.Point(462, 254);
             this.modifyPartNameValue.Margin = new System.Windows.Forms.Padding(6);
             this.modifyPartNameValue.Name = "modifyPartNameValue";
             this.modifyPartNameValue.Size = new System.Drawing.Size(340, 29);
@@ -244,7 +245,7 @@
             this.Controls.Add(this.minValue);
             this.Controls.Add(this.priceCostValue);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.Value);
+            this.Controls.Add(this.ValueSwitch);
             this.Controls.Add(this.labelSwitch);
             this.Controls.Add(this.maxValue);
             this.Controls.Add(this.label5);
@@ -273,7 +274,7 @@
         private System.Windows.Forms.TextBox minValue;
         private System.Windows.Forms.TextBox priceCostValue;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox Value;
+        private System.Windows.Forms.TextBox ValueSwitch;
         private System.Windows.Forms.Label labelSwitch;
         private System.Windows.Forms.TextBox maxValue;
         private System.Windows.Forms.Label label5;

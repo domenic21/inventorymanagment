@@ -15,47 +15,74 @@ namespace ManagmentSystemUI
 
         }
 
-        private int generateId()
-        {
-            // Implement your ID generation logic here
-            // For example, you could use a random number
-            Random random = new Random();
-            return random.Next(1, 10000);
-        }
+
 
         private void addPartsSaveBtn_Click(object sender, EventArgs e)
         {
-            string name = addPartNameValue.Text;
-            int inventory = Convert.ToInt32(inventoryValue.Text);
-            int max = Convert.ToInt32(maxValue.Text);
-            int min = Convert.ToInt32(minValue.Text);
-            decimal price = Convert.ToDecimal(priceCostValue.Text);
-
-            int partID = generateId();
-
-            //min and max validation
-
-
-
-
-            if (inHouseRadioBtn.Checked)
+            // check if the user has entered a value for each field
+            if (string.IsNullOrWhiteSpace(addPartNameValue.Text) ||
+                string.IsNullOrEmpty(inventoryValue.Text) ||
+                string.IsNullOrEmpty(priceCostValue.Text) ||
+                string.IsNullOrEmpty(maxValue.Text) ||
+                string.IsNullOrEmpty(minValue.Text) ||
+                string.IsNullOrEmpty(labelSwitch2.Text))
             {
-                int machineID = Convert.ToInt32(labelSwitch2.Text);
-                Inventory.addPart(new InHouse(partID, inventory, min, max, price, name, machineID));
-            }
-            else if (outsourcedRadioBtn.Checked)
-            {
-                string companyName = labelSwitch2.Text;
-                Inventory.addPart(new Outsource(partID, inventory, min, max, price, name, companyName));
-            }
-            else
-            {
-                MessageBox.Show("Please select a part type");
+
+                MessageBox.Show("Please enter a valid value for each field");
                 return;
+            }
+
+
+
+            try
+            {
+                string name = addPartNameValue.Text;
+                int inventory = Convert.ToInt32(inventoryValue.Text);
+                int max = Convert.ToInt32(maxValue.Text);
+                int min = Convert.ToInt32(minValue.Text);
+                decimal price = Convert.ToDecimal(priceCostValue.Text);
+
+                int partID = Inventory.GenerateID();
+                //min and max validation
+
+                if (inHouseRadioBtn.Checked)
+                {
+                    int machineID = Convert.ToInt32(labelSwitch2.Text);
+                    Inventory.addPart(new InHouse(partID, inventory, min, max, price, name, machineID));
+                    ;
+                }
+                else if (outsourcedRadioBtn.Checked)
+                {
+                    string companyName = labelSwitch2.Text;
+                    Inventory.addPart(new Outsource(partID, inventory, min, max, price, name, companyName));
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select a part type");
+                    return;
+                }
+                if (inventory < min || inventory > max)
+                {
+                    MessageBox.Show("Inventory must be between min and max values");
+                    return;
+                }
+                else if (min > max)
+                {
+                    MessageBox.Show("Min value must be less than max value");
+                    return;
+                }
+
+                // Enable the save button since all validations passed
 
             }
-            this.Close();
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid value for each field");
+                return;
+            }
 
+            this.Close();
         }
 
         private void addPartsCancelBtn_Click(object sender, EventArgs e)
@@ -73,6 +100,11 @@ namespace ManagmentSystemUI
         private void inHouseRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             label.Text = "Machine ID";
+        }
+
+        private void AddPartForm_Load(object sender, EventArgs e)
+        {
+
         }
 
 

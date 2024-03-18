@@ -44,7 +44,7 @@
             this.label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.searchPartsValue = new System.Windows.Forms.TextBox();
-            this.searchPorductValue = new System.Windows.Forms.TextBox();
+            this.searchProductValue = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.partsShowBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsShowBox)).BeginInit();
             this.SuspendLayout();
@@ -71,8 +71,8 @@
             // 
             // Exit
             // 
-            this.Exit.Location = new System.Drawing.Point(1749, 777);
-            this.Exit.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Exit.Location = new System.Drawing.Point(1890, 724);
+            this.Exit.Margin = new System.Windows.Forms.Padding(6);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(138, 42);
             this.Exit.TabIndex = 23;
@@ -83,7 +83,7 @@
             // AddProductsBtn
             // 
             this.AddProductsBtn.Location = new System.Drawing.Point(1452, 724);
-            this.AddProductsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.AddProductsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.AddProductsBtn.Name = "AddProductsBtn";
             this.AddProductsBtn.Size = new System.Drawing.Size(138, 42);
             this.AddProductsBtn.TabIndex = 22;
@@ -94,7 +94,7 @@
             // ModifyProductsBtn
             // 
             this.ModifyProductsBtn.Location = new System.Drawing.Point(1600, 724);
-            this.ModifyProductsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ModifyProductsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.ModifyProductsBtn.Name = "ModifyProductsBtn";
             this.ModifyProductsBtn.Size = new System.Drawing.Size(138, 42);
             this.ModifyProductsBtn.TabIndex = 21;
@@ -105,7 +105,7 @@
             // DeleteProductsBtn
             // 
             this.DeleteProductsBtn.Location = new System.Drawing.Point(1749, 724);
-            this.DeleteProductsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DeleteProductsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.DeleteProductsBtn.Name = "DeleteProductsBtn";
             this.DeleteProductsBtn.Size = new System.Drawing.Size(138, 42);
             this.DeleteProductsBtn.TabIndex = 20;
@@ -116,7 +116,7 @@
             // AddPartsBtn
             // 
             this.AddPartsBtn.Location = new System.Drawing.Point(436, 724);
-            this.AddPartsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.AddPartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.AddPartsBtn.Name = "AddPartsBtn";
             this.AddPartsBtn.Size = new System.Drawing.Size(138, 42);
             this.AddPartsBtn.TabIndex = 19;
@@ -127,7 +127,7 @@
             // DeletePartsBtn
             // 
             this.DeletePartsBtn.Location = new System.Drawing.Point(733, 724);
-            this.DeletePartsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DeletePartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.DeletePartsBtn.Name = "DeletePartsBtn";
             this.DeletePartsBtn.Size = new System.Drawing.Size(138, 42);
             this.DeletePartsBtn.TabIndex = 18;
@@ -138,7 +138,7 @@
             // ModifyPartsBtn
             // 
             this.ModifyPartsBtn.Location = new System.Drawing.Point(585, 724);
-            this.ModifyPartsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ModifyPartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.ModifyPartsBtn.Name = "ModifyPartsBtn";
             this.ModifyPartsBtn.Size = new System.Drawing.Size(138, 42);
             this.ModifyPartsBtn.TabIndex = 17;
@@ -149,22 +149,24 @@
             // SeachProductsBtn
             // 
             this.SeachProductsBtn.Location = new System.Drawing.Point(1452, 113);
-            this.SeachProductsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SeachProductsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.SeachProductsBtn.Name = "SeachProductsBtn";
             this.SeachProductsBtn.Size = new System.Drawing.Size(138, 42);
             this.SeachProductsBtn.TabIndex = 16;
             this.SeachProductsBtn.Text = "Search";
             this.SeachProductsBtn.UseVisualStyleBackColor = true;
+            this.SeachProductsBtn.Click += new System.EventHandler(this.SeachProductsBtn_Click);
             // 
             // SearchPartsBtn
             // 
             this.SearchPartsBtn.Location = new System.Drawing.Point(436, 113);
-            this.SearchPartsBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SearchPartsBtn.Margin = new System.Windows.Forms.Padding(6);
             this.SearchPartsBtn.Name = "SearchPartsBtn";
             this.SearchPartsBtn.Size = new System.Drawing.Size(138, 42);
             this.SearchPartsBtn.TabIndex = 15;
             this.SearchPartsBtn.Text = "Search";
             this.SearchPartsBtn.UseVisualStyleBackColor = true;
+            this.SearchPartsBtn.Click += new System.EventHandler(this.SearchPartsBtn_Click);
             // 
             // partsShowBox
             // 
@@ -172,7 +174,7 @@
             this.partsShowBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.partsShowBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsShowBox.Location = new System.Drawing.Point(28, 166);
-            this.partsShowBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.partsShowBox.Margin = new System.Windows.Forms.Padding(6);
             this.partsShowBox.MultiSelect = false;
             this.partsShowBox.Name = "partsShowBox";
             this.partsShowBox.ReadOnly = true;
@@ -180,6 +182,7 @@
             this.partsShowBox.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.partsShowBox.Size = new System.Drawing.Size(843, 546);
             this.partsShowBox.TabIndex = 14;
+
             this.partsShowBox.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.NoPartsSelectedInit);
             // 
             // ProductsShowBox
@@ -188,13 +191,13 @@
             this.ProductsShowBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ProductsShowBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductsShowBox.Location = new System.Drawing.Point(1043, 166);
-            this.ProductsShowBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ProductsShowBox.Margin = new System.Windows.Forms.Padding(6);
             this.ProductsShowBox.MultiSelect = false;
             this.ProductsShowBox.Name = "ProductsShowBox";
             this.ProductsShowBox.ReadOnly = true;
             this.ProductsShowBox.RowHeadersWidth = 51;
             this.ProductsShowBox.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductsShowBox.Size = new System.Drawing.Size(843, 546);
+            this.ProductsShowBox.Size = new System.Drawing.Size(918, 546);
             this.ProductsShowBox.TabIndex = 13;
             this.ProductsShowBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductsShowBox_CellContentClick);
             this.ProductsShowBox.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.noSelectionInitial);
@@ -223,25 +226,25 @@
             // searchPartsValue
             // 
             this.searchPartsValue.Location = new System.Drawing.Point(585, 118);
-            this.searchPartsValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.searchPartsValue.Margin = new System.Windows.Forms.Padding(6);
             this.searchPartsValue.Name = "searchPartsValue";
             this.searchPartsValue.Size = new System.Drawing.Size(283, 29);
             this.searchPartsValue.TabIndex = 28;
             // 
-            // searchPorductValue
+            // searchProductValue
             // 
-            this.searchPorductValue.Location = new System.Drawing.Point(1619, 113);
-            this.searchPorductValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.searchPorductValue.Name = "searchPorductValue";
-            this.searchPorductValue.Size = new System.Drawing.Size(264, 29);
-            this.searchPorductValue.TabIndex = 29;
+            this.searchProductValue.Location = new System.Drawing.Point(1619, 113);
+            this.searchProductValue.Margin = new System.Windows.Forms.Padding(6);
+            this.searchProductValue.Name = "searchProductValue";
+            this.searchProductValue.Size = new System.Drawing.Size(264, 29);
+            this.searchProductValue.TabIndex = 29;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1908, 831);
-            this.Controls.Add(this.searchPorductValue);
+            this.ClientSize = new System.Drawing.Size(2066, 836);
+            this.Controls.Add(this.searchProductValue);
             this.Controls.Add(this.searchPartsValue);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label);
@@ -258,7 +261,7 @@
             this.Controls.Add(this.SearchPartsBtn);
             this.Controls.Add(this.partsShowBox);
             this.Controls.Add(this.ProductsShowBox);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.partsShowBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsShowBox)).EndInit();
@@ -285,6 +288,6 @@
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox searchPartsValue;
-        private System.Windows.Forms.TextBox searchPorductValue;
+        private System.Windows.Forms.TextBox searchProductValue;
     }
 }

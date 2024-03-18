@@ -7,58 +7,21 @@ namespace Domenic_Arias_C968.inventoryManagmentSystem
 {
     public class Inventory
     {
-        public static BindingList<Products> Products = new BindingList<Products>()
-        {
+        public static BindingList<Products> Products = new BindingList<Products>();
 
-            new Products
-            {
-                ProductID = 1,
-                Name = "Wheel",
-                Inventory = 10,
-                Price = 150,
-                Min = 1,
-                Max = 10
-            },
-            new Products
-               {
-                   ProductID = 2,
-                   Name = "Steering",
-                   Inventory = 10,
-                   Price = 200,
-                   Min = 1,
-                   Max = 10
-               },
-            new Products
-               {
-                   ProductID = 3,
-                   Name = "Ignition",
-                   Inventory = 10,
-                   Price = 500,
-                   Min = 1,
-                   Max = 10
-               },
-            new Products
-          {
-             ProductID = 4,
-              Name = "Ignition",
-              Inventory = 10,
-              Price = 500,
-              Min = 1,
-              Max = 10
-          },
+
+
+        public static BindingList<Parts> AllParts = new BindingList<Parts>();
+
+
+        //int partID, int inventory, int min, int max, decimal price, string name, int machineID
 
 
 
 
 
 
-
-
-
-    };
-        public static BindingList<Parts> parts = new BindingList<Parts>();
-
-
+        // method to generate a random ID
         public static int GenerateID()
         {
             Random random = new Random();
@@ -67,11 +30,89 @@ namespace Domenic_Arias_C968.inventoryManagmentSystem
 
         }
 
-        public static void addPart(Parts part)
+        // method for parts
+        public static void addPart(Parts AllPart)
         {
-            parts.Add(part);
+            AllParts.Add(AllPart);
+
 
         }
+        public static bool deletePart(Parts part)
+        {
+            AllParts.Remove(part);
+            return true;
+        }
+
+        public static Parts lookupPart(int partID)
+        {
+            foreach (Parts part in AllParts)
+            {
+                if (part.PartID == partID)
+                {
+                    return part;
+                }
+            }
+            return null;
+        }
+        public static void updatePart(int partID, Parts part)
+        {
+
+
+            for (int i = 0; i < AllParts.Count; i++)
+            {
+                if (AllParts[i].PartID == part.PartID)
+                {
+                    if (AllParts[i] is InHouse newInHouse)
+                    {
+                        newInHouse.Name = part.Name;
+                        newInHouse.InStock = part.InStock;
+                        newInHouse.Price = part.Price;
+                        newInHouse.Min = part.Min;
+                        newInHouse.Max = part.Max;
+                        newInHouse.MachineID = ((InHouse)part).MachineID;
+                    }
+                    else if (AllParts[i] is Outsource newOutsource)
+                    {
+                        newOutsource.Name = part.Name;
+                        newOutsource.InStock = part.InStock;
+                        newOutsource.Price = part.Price;
+                        newOutsource.Min = part.Min;
+                        newOutsource.Max = part.Max;
+                        newOutsource.CompanyName = ((Outsource)part).CompanyName;
+                    }
+                }
+            }
+
+        }
+
+
+
+        // method for products
+        public static void addProduct(Products product)
+        {
+            Products.Add(product);
+        }
+        public static bool removeProduct(Products product)
+        {
+            Products.Remove(product);
+            return true;
+        }
+        public static Products lookupProduct(int productID)
+        {
+            foreach (Products product in Products)
+            {
+                if (product.ProductID == productID)
+                {
+                    return product;
+                }
+            }
+            return null;
+        }
+        public static void updateProduct(int index, Products product)
+        {
+            Products[index] = product;
+        }
+
 
 
 

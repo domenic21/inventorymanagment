@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domenic_Arias_C968.inventoryManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace ManagmentSystemUI
         public AddProductForm()
         {
             InitializeComponent();
+            addProductIDValue.Enabled = false;
+            partsShowBox.DataSource = Inventory.AllParts;
+        }
+
+        private void partsShowBox_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

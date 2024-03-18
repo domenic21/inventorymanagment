@@ -98,7 +98,6 @@
             this.addPartIDValue.Name = "addPartIDValue";
             this.addPartIDValue.Size = new System.Drawing.Size(187, 35);
             this.addPartIDValue.TabIndex = 4;
-            
             // 
             // addPartNameValue
             // 
@@ -244,6 +243,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AddPartForm";
             this.Text = "AddPartForm";
+            this.Load += new System.EventHandler(this.AddPartForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
