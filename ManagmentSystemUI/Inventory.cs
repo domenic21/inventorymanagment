@@ -108,9 +108,21 @@ namespace Domenic_Arias_C968.inventoryManagmentSystem
             }
             return null;
         }
-        public static void updateProduct(int index, Products product)
+        public static void updateProduct(int productID, Products updatedproduct)
         {
-            Products[index] = product;
+            foreach (var product in Products)
+            {
+                if (product.ProductID == productID)
+                {
+                    product.AssociatedParts = updatedproduct.AssociatedParts;
+                    product.Name = updatedproduct.Name;
+                    product.Price = updatedproduct.Price;
+                    product.Inventory = updatedproduct.Inventory;
+                    product.Min = updatedproduct.Min;
+                    product.Max = updatedproduct.Max;
+                    return;
+                }
+            }
         }
 
 

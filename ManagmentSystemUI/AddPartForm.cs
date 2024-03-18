@@ -10,7 +10,7 @@ namespace ManagmentSystemUI
         public AddPartForm()
         {
             InitializeComponent();
-
+            this.StartPosition = FormStartPosition.CenterScreen;
             addPartIDValue.Enabled = false;
 
         }
@@ -43,7 +43,14 @@ namespace ManagmentSystemUI
                 decimal price = Convert.ToDecimal(priceCostValue.Text);
 
                 int partID = Inventory.GenerateID();
+                //check if name is a number
+                if (int.TryParse(name, out int result))
+                {
+                    MessageBox.Show("Name cannot be a number");
+                    return;
+                }
                 //min and max validation
+
 
                 if (inHouseRadioBtn.Checked)
                 {
@@ -54,8 +61,16 @@ namespace ManagmentSystemUI
                 else if (outsourcedRadioBtn.Checked)
                 {
                     string companyName = labelSwitch2.Text;
-                    Inventory.addPart(new Outsource(partID, inventory, min, max, price, name, companyName));
+                    if (int.TryParse(companyName, out _)) // Check if the company name is a number
+                    {
+                        // If the company name is a number, throw a format exception
+                        throw new FormatException("Company name cannot be a number");
+                    }
+                    else
+                    {
 
+                        Inventory.addPart(new Outsource(partID, inventory, min, max, price, name, companyName));
+                    }
                 }
                 else
                 {
@@ -73,7 +88,7 @@ namespace ManagmentSystemUI
                     return;
                 }
 
-                // Enable the save button since all validations passed
+
 
             }
             catch (FormatException)

@@ -9,16 +9,7 @@ namespace ManagmentSystemUI
     {
         public Parts SelectedPart { get; set; }
 
-        public ModifyPartForm()
-        {
-            InitializeComponent();
-            modifyPartIDValue.Enabled = false;
 
-
-
-
-            //modifyPartIDValue.Text = Inventory.Parts.PartID.ToString();
-        }
 
         public ModifyPartForm(Parts selectedPart)
         {
@@ -30,6 +21,7 @@ namespace ManagmentSystemUI
             priceCostValue.Text = SelectedPart.Price.ToString();
             maxValue.Text = SelectedPart.Max.ToString();
             minValue.Text = SelectedPart.Min.ToString();
+            modifyPartIDValue.Enabled = false;
             if (selectedPart is InHouse)
             {
                 inHouseRadioBtn.Checked = true;

@@ -182,7 +182,7 @@
             this.partsShowBox.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.partsShowBox.Size = new System.Drawing.Size(843, 546);
             this.partsShowBox.TabIndex = 14;
-
+      
             this.partsShowBox.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.NoPartsSelectedInit);
             // 
             // ProductsShowBox

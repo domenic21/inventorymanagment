@@ -36,12 +36,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.inventoryValue = new System.Windows.Forms.TextBox();
             this.inventorylabel = new System.Windows.Forms.Label();
-            this.addProducttNameValue = new System.Windows.Forms.TextBox();
+            this.addProductNameValue = new System.Windows.Forms.TextBox();
             this.namelabel = new System.Windows.Forms.Label();
             this.addProductIDValue = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.partsShowBox = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.associatedPartShowBox = new System.Windows.Forms.DataGridView();
             this.searchBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
@@ -51,8 +51,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.addProductCancelBtn = new System.Windows.Forms.Button();
+            this.addProductSaveBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.partsShowBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.associatedPartShowBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -127,13 +129,13 @@
             this.inventorylabel.TabIndex = 23;
             this.inventorylabel.Text = "Inventory";
             // 
-            // addProducttNameValue
+            // addProductNameValue
             // 
-            this.addProducttNameValue.Location = new System.Drawing.Point(156, 312);
-            this.addProducttNameValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.addProducttNameValue.Name = "addProducttNameValue";
-            this.addProducttNameValue.Size = new System.Drawing.Size(340, 29);
-            this.addProducttNameValue.TabIndex = 22;
+            this.addProductNameValue.Location = new System.Drawing.Point(156, 312);
+            this.addProductNameValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.addProductNameValue.Name = "addProductNameValue";
+            this.addProductNameValue.Size = new System.Drawing.Size(340, 29);
+            this.addProductNameValue.TabIndex = 22;
             // 
             // namelabel
             // 
@@ -179,20 +181,20 @@
             this.partsShowBox.TabIndex = 33;
             this.partsShowBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partsShowBox_CellContentClick);
             // 
-            // dataGridView1
+            // associatedPartShowBox
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(642, 705);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1186, 412);
-            this.dataGridView1.TabIndex = 34;
+            this.associatedPartShowBox.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
+            this.associatedPartShowBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.associatedPartShowBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.associatedPartShowBox.Location = new System.Drawing.Point(642, 705);
+            this.associatedPartShowBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.associatedPartShowBox.MultiSelect = false;
+            this.associatedPartShowBox.Name = "associatedPartShowBox";
+            this.associatedPartShowBox.ReadOnly = true;
+            this.associatedPartShowBox.RowHeadersWidth = 51;
+            this.associatedPartShowBox.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.associatedPartShowBox.Size = new System.Drawing.Size(1186, 412);
+            this.associatedPartShowBox.TabIndex = 34;
             // 
             // searchBtn
             // 
@@ -213,6 +215,7 @@
             this.addBtn.TabIndex = 36;
             this.addBtn.Text = "Add";
             this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // searchButton
             // 
@@ -242,13 +245,14 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(1690, 1128);
+            this.deleteBtn.Location = new System.Drawing.Point(1690, 1121);
             this.deleteBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(138, 42);
             this.deleteBtn.TabIndex = 40;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // label1
             // 
@@ -281,11 +285,33 @@
             this.label4.TabIndex = 65;
             this.label4.Text = "All Parts";
             // 
+            // addProductCancelBtn
+            // 
+            this.addProductCancelBtn.Location = new System.Drawing.Point(1690, 1172);
+            this.addProductCancelBtn.Name = "addProductCancelBtn";
+            this.addProductCancelBtn.Size = new System.Drawing.Size(138, 39);
+            this.addProductCancelBtn.TabIndex = 66;
+            this.addProductCancelBtn.Text = "Cancel";
+            this.addProductCancelBtn.UseVisualStyleBackColor = true;
+            this.addProductCancelBtn.Click += new System.EventHandler(this.addProductCancelBtn_Click);
+            // 
+            // addProductSaveBtn
+            // 
+            this.addProductSaveBtn.Location = new System.Drawing.Point(1552, 1172);
+            this.addProductSaveBtn.Name = "addProductSaveBtn";
+            this.addProductSaveBtn.Size = new System.Drawing.Size(132, 39);
+            this.addProductSaveBtn.TabIndex = 67;
+            this.addProductSaveBtn.Text = "Save";
+            this.addProductSaveBtn.UseVisualStyleBackColor = true;
+            this.addProductSaveBtn.Click += new System.EventHandler(this.addProductSaveBtn_Click);
+            // 
             // AddProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1850, 1259);
+            this.Controls.Add(this.addProductSaveBtn);
+            this.Controls.Add(this.addProductCancelBtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -295,7 +321,7 @@
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.searchBtn);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.associatedPartShowBox);
             this.Controls.Add(this.partsShowBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.minValue);
@@ -305,7 +331,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.inventoryValue);
             this.Controls.Add(this.inventorylabel);
-            this.Controls.Add(this.addProducttNameValue);
+            this.Controls.Add(this.addProductNameValue);
             this.Controls.Add(this.namelabel);
             this.Controls.Add(this.addProductIDValue);
             this.Controls.Add(this.label2);
@@ -313,7 +339,7 @@
             this.Name = "AddProductForm";
             this.Text = "AddProductForm";
             ((System.ComponentModel.ISupportInitialize)(this.partsShowBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.associatedPartShowBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,12 +355,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox inventoryValue;
         private System.Windows.Forms.Label inventorylabel;
-        private System.Windows.Forms.TextBox addProducttNameValue;
+        private System.Windows.Forms.TextBox addProductNameValue;
         private System.Windows.Forms.Label namelabel;
         private System.Windows.Forms.TextBox addProductIDValue;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView partsShowBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView associatedPartShowBox;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button searchButton;
@@ -344,5 +370,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button addProductCancelBtn;
+        private System.Windows.Forms.Button addProductSaveBtn;
     }
 }

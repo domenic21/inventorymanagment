@@ -81,12 +81,12 @@ namespace ManagmentSystemUI
             {
                 MessageBox.Show("Please select a product to modify");
             }
-            /* else if (ProductsShowBox.CurrentRow.Selected)
+            else if (ProductsShowBox.CurrentRow.Selected)
              {
-                 Products selectedProduct = (Products)ProductsShowBox.CurrentRow.DataBoundItem;
-                 ModifyProductForm modifyProductForm = new ModifyProductForm(selectedProduct);
+                 Products product = (Products)ProductsShowBox.CurrentRow.DataBoundItem;
+                 ModifyProductForm modifyProductForm = new ModifyProductForm(product);
                  modifyProductForm.Show();
-             }*/
+             }
         }
 
 
@@ -108,7 +108,7 @@ namespace ManagmentSystemUI
             {
                 if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this product?", "Confirmation", MessageBoxButtons.YesNo))
                 {
-                    Inventory.Products.RemoveAt(ProductsShowBox.CurrentRow.Index);
+                    Inventory.removeProduct((Products)ProductsShowBox.CurrentRow.DataBoundItem);
                 }
 
             }
@@ -123,9 +123,9 @@ namespace ManagmentSystemUI
         }
 
         // Modify this method to pass the selected row data to the ModifyPartForm
+        // Modify this method to refresh the partsShowBox after the modification form is closed
         private void ModifyPartsBtn_Click(object sender, EventArgs e)
         {
-
             if (!partsShowBox.CurrentRow.Selected)
             {
                 MessageBox.Show("Please select a product to modify");
@@ -134,13 +134,17 @@ namespace ManagmentSystemUI
             {
                 Parts selectedPart = (Parts)partsShowBox.CurrentRow.DataBoundItem;
                 ModifyPartForm modifyPartForm = new ModifyPartForm(selectedPart);
-                modifyPartForm.Show();
-
-
-                partsShowBox.ClearSelection();
-
-                
+                modifyPartForm.FormClosed += ModifyPartForm_FormClosed; // handle the FormClosed event
+                modifyPartForm.Show(); // Show the modifyPartForm
             }
+        }
+
+        // Add this method to handle the FormClosed event of the modifyPartForm
+        private void ModifyPartForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            partsShowBox.DataSource = null; // Set the DataSource to null
+            partsShowBox.DataSource = Inventory.AllParts; // Set the DataSource to the updated AllParts list
+            partsShowBox.Refresh();// Refresh the partsShowBox
         }
 
         private void DeletePartsBtn_Click(object sender, EventArgs e)
@@ -275,8 +279,6 @@ namespace ManagmentSystemUI
 
             ProductsShowBox.ClearSelection();
         }
-
-
 
 
     }
